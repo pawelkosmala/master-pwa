@@ -1,0 +1,32 @@
+<section>
+  <form [formGroup]="form" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <!-- Email -->
+    <mat-form-field>
+      <input matInput type="email" placeholder="Email" formControlName="email">
+      <mat-error *ngIf="email.invalid && email.touched" class="text-danger">
+        Email jest niepoprawny
+      </mat-error>
+      <mat-error *ngIf="email.errors['required']" class="text-danger">
+        Email jest wymagany
+      </mat-error>
+    </mat-form-field>
+
+
+    <!-- Password -->
+    <mat-form-field>
+      <input matInput type="password" placeholder="Hasło" formControlName="password">
+      <mat-hint align="end">Hasło ma zawierać jedną literę i cyfrę </mat-hint>
+
+      <mat-error *ngIf="password.invalid && password.touched" class="text-danger">
+        Hasło jest niepoprawne
+      </mat-error>
+
+      <mat-error *ngIf="password.errors['required']" class="text-danger">
+        Hasło jest wymagane
+      </mat-error>
+    </mat-form-field>
+
+
+    <button mat-raised-button type="submit" [disabled]='form.invalid' color="primary">Zarejestruj</button>
+  </form>
+</section>
