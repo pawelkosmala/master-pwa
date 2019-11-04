@@ -53,7 +53,7 @@ import { AuthGuard } from './guards/auth.guard';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     AppRoutingModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBTquXSNnzsuQXhnjYs8KVw47seljOobkM'
+      apiKey: environment.googleMaps.apiKey
     })
   ],
   providers: [
