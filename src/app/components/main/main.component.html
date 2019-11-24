@@ -1,1 +1,31 @@
-<agm-map [latitude]="lat" [longitude]="lng"></agm-map>
+<div class="main__map-container" fxLayout="row" fxLayoutAlign="center center">
+  <agm-map [zoom]="zoom" [latitude]="coordinates.latitude" [longitude]="coordinates.longitude"
+    (mapClick)="onMapClick($event)">
+    <agm-marker *ngFor="let restaurant of restaurants$ | async" [latitude]="restaurant.coordinates.latitude"
+      [longitude]="restaurant.coordinates.longitude" [markerDraggable]="false">
+      <agm-info-window>
+        <mat-card>
+          <img mat-card-image [src]="restaurant.main_image">
+          <mat-card-header>
+            <!-- TODO: Do we want to have the restaurant logo displayed here
+            <div mat-card-avatar></div>
+             -->
+            <mat-card-title>
+              {{restaurant.name}}
+            </mat-card-title>
+            <mat-card-subtitle>
+              {{restaurant.address}}
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            {{restaurant.description}}
+          </mat-card-content>
+          <mat-card-actions>
+            <!-- TODO: Add navigation to the restaurant preview -->
+            <button mat-raised-button color="primary">Podgląd</button>
+          </mat-card-actions>
+        </mat-card>
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
+</div>

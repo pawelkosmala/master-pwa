@@ -37,6 +37,7 @@ export class AuthService {
   }
 
   logout() {
+    this.angularFireAuth.auth.signOut();
     this.authChange$.next(false);
     this.router.navigate(['/']);
   }
